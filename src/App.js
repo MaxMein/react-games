@@ -15,12 +15,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [nextPageUrl, setNextPageUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  // Function to handle the click and toggle the state
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
-  };
   const searchGames = async (title) => {
     setIsLoading(true);
     let url =
