@@ -1,29 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { MdGames } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 
-const Sidebar = () => {
+const Sidebar = ({ page }) => {
+  const [activePage, setActivePage] = useState();
+
+  const handleSidebarClick = (page) => {
+    setActivePage(page);
+  };
+  page(activePage);
   return (
     <ul className="sidebar">
       <li>
-        <Link to="./pages/Home">
+        <button onClick={() => handleSidebarClick("home")}>
           <AiFillHome />
           Home
-        </Link>
+        </button>
       </li>
       <li>
-        <Link to="/games">
+        <button onClick={() => handleSidebarClick("games")}>
           <MdGames />
           Games
-        </Link>
+        </button>
       </li>
       <li>
-        <Link to="/favorites">
+        <button onClick={() => handleSidebarClick("favorites")}>
           <MdFavorite />
           Favorites
-        </Link>
+        </button>
       </li>
     </ul>
   );
