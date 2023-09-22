@@ -18,24 +18,26 @@ const Games = ({ favorite }) => {
   const searchGames = async (title) => {
     setIsLoading(true);
     let url =
-      "https://api.rawg.io/api/games?key=117fa131b9db45128c7d0af9c82151ae&search_precise=true&page_size=40&page=" +
+      "https://api.rawg.io/api/games?key=117fa131b9db45128c7d0af9c82151ae&search_precise=true&page_size=24&page=" +
       currentPage;
     if (title) {
       url += `&search=${title}`;
     }
-    const response = await fetch(url);
+    console.log(currentPage);
     console.log(url);
+    const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     setIsLoading(false);
     setGames(data.results);
     setNextPageUrl(data.next);
   };
-
   useEffect(() => {
     searchGames(searchTerm);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
+  useEffect(() => {
+    setIsLoading(Games?.length <= 0);
+  }, [Games]);
 
   return (
     <div className="app">
@@ -63,32 +65,26 @@ const Games = ({ favorite }) => {
           }}
         />
       </div>
-      {Games?.length > 0 ? (
-        <div className="container">
-          {isLoading ? (
-            <div className="loading-circle"></div>
-          ) : (
-            Games.map((game) => (
-              <GameCard
-                game={game}
-                faved={false}
-                onFavoriteClick={(game) => {
-                  favorite(game);
-                }}
-              />
-            ))
-          )}
-        </div>
+      {isLoading ? (
+        <div className="loading-circle"></div>
       ) : (
-        <div className="empty">
-          <h2>No Games found</h2>
+        <div className="container">
+          {Games.map((game) => (
+            <GameCard
+              game={game}
+              faved={false}
+              onFavoriteClick={(game) => {
+                favorite(game);
+              }}
+            />
+          ))}
         </div>
       )}
       <div class="pagination">
         <button
           className="prevPage pagination-button"
           onClick={() => {
-            setCurrentPage((prevPage) => prevPage - 1); // Include this line to maintain the search context
+            setCurrentPage((prevPage) => prevPage - 1);
           }}
           disabled={currentPage === 1}
         >
@@ -98,8 +94,10 @@ const Games = ({ favorite }) => {
         <button
           className="nextPage pagination-button"
           onClick={() => {
-            setCurrentPage((prevPage) => prevPage + 1);
-            searchGames(searchTerm); // Include this line to maintain the search context
+            // Only call the searchGames() function if the nextPageUrl state variable is not empty
+            if (nextPageUrl) {
+              setCurrentPage((prevPage) => prevPage + 1);
+            }
           }}
           disabled={!nextPageUrl}
         >

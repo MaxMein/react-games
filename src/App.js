@@ -13,7 +13,7 @@ const App = () => {
   const handlePageData = (data) => {
     setDataFromPage(data);
   };
-
+  console.log(favorites);
   const handleFavorite = (data) => {
     if (favorites && Array.isArray(favorites)) {
       if (favorites.includes(data)) {

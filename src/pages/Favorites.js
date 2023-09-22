@@ -16,7 +16,7 @@ const Favorites = ({ favoriteArray, favorite }) => {
           </div>
         ) : (
           <div className="empty">
-            <h2>No Games found</h2>
+            <h2>No Favorites</h2>
           </div>
         )}
       </div>

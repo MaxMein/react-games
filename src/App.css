@@ -42,8 +42,8 @@ h1 {
 
 .search {
   width: 71%;
+  min-width: 414px;
   margin: 4rem 0 2rem;
-  min-width: 71%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,6 +245,7 @@ h1 {
   height: 40px;
   animation: spin 1s linear infinite;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 /* Style for the pagination container */

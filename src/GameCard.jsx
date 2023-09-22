@@ -3,7 +3,6 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 const GameCard = ({ game, onFavoriteClick, faved}) => {
   const [isFavorited, setIsFavorited] = useState(faved);
-  console.log(game, "Status:", isFavorited);
   const handleClick = () => {
     if(!faved){
       setIsFavorited(!isFavorited);
