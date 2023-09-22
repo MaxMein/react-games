@@ -5,8 +5,12 @@ const GameCard = ({ game, onFavoriteClick, faved}) => {
   const [isFavorited, setIsFavorited] = useState(faved);
   console.log(game, "Status:", isFavorited);
   const handleClick = () => {
-    setIsFavorited(!isFavorited);
-    onFavoriteClick(game);
+    if(!faved){
+      setIsFavorited(!isFavorited);
+      onFavoriteClick(game);
+    }else{
+      onFavoriteClick(game);
+    }
   };
 
   

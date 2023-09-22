@@ -71,6 +71,7 @@ const Games = ({ favorite }) => {
             Games.map((game) => (
               <GameCard
                 game={game}
+                faved={false}
                 onFavoriteClick={(game) => {
                   favorite(game);
                 }}
