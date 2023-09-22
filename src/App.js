@@ -9,10 +9,24 @@ import Favorites from "./pages/Favorites";
 
 const App = () => {
   const [dataFromPage, setDataFromPage] = useState();
+  const [favorites, setFavorite] = useState([]);
+  console.log(favorites);
   const handlePageData = (data) => {
     setDataFromPage(data);
   };
 
+  const handleFavorite = (data) => {
+    if (favorites && Array.isArray(favorites)) {
+      if (favorites.includes(data)) {
+        const newFavorite = favorites.filter((i) => i !== data);
+        setFavorite(newFavorite);
+      } else {
+        setFavorite([...favorites, data]);
+      }
+    } else {
+      setFavorite([]);
+    }
+  };
   return (
     <div className="app">
       <Sidebar page={handlePageData} />
@@ -20,8 +34,10 @@ const App = () => {
         {
           {
             home: <Home />,
-            games: <Games />,
-            favorites: <Favorites />,
+            games: <Games favorite={handleFavorite} />,
+            favorites: (
+              <Favorites favoriteArray={favorites} favorite={handleFavorite} />
+            ),
           }[dataFromPage]
         }
       </div>

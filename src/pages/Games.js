@@ -7,7 +7,8 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../Header";
-const Games = () => {
+
+const Games = ({ favorite }) => {
   const [Games, setGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +18,7 @@ const Games = () => {
   const searchGames = async (title) => {
     setIsLoading(true);
     let url =
-      "https://api.rawg.io/api/games?key=117fa131b9db45128c7d0af9c82151ae&page=" +
+      "https://api.rawg.io/api/games?key=117fa131b9db45128c7d0af9c82151ae&search_precise=true&page_size=40&page=" +
       currentPage;
     if (title) {
       url += `&search=${title}`;
@@ -35,6 +36,7 @@ const Games = () => {
     searchGames(searchTerm);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
+
   return (
     <div className="app">
       <Header pagename={"Games"} />
@@ -66,7 +68,14 @@ const Games = () => {
           {isLoading ? (
             <div className="loading-circle"></div>
           ) : (
-            Games.map((game) => <GameCard game={game} />)
+            Games.map((game) => (
+              <GameCard
+                game={game}
+                onFavoriteClick={(game) => {
+                  favorite(game);
+                }}
+              />
+            ))
           )}
         </div>
       ) : (
