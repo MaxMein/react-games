@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import SearchIcon from "./search.svg";
 import GameCard from "./GameCard";
+import Sidebar from "./Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"; // Import the specific icons you need
+} from "@fortawesome/free-solid-svg-icons";
+import { BrowserRouter as Router } from "react-router-dom";
+
 //Sites: 42699
 
 const App = () => {
@@ -42,6 +45,9 @@ const App = () => {
   }, [currentPage]);
   return (
     <div className="app">
+      <Router>
+        <Sidebar />
+      </Router>
       <h1 onClick={handleReloadClick} className="title">
         GameLand
       </h1>
