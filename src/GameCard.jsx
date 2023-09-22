@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 const GameCard = ({ game, onFavoriteClick, faved}) => {
-  const [isFavorited, setIsFavorited] = useState(false);
-
-  useEffect(() => {
-    setIsFavorited(faved);
-  }, [faved]);
+  const [isFavorited, setIsFavorited] = useState(faved);
+  console.log(game, "Status:", isFavorited);
   const handleClick = () => {
     setIsFavorited(!isFavorited);
     onFavoriteClick(game);
   };
+
+  
 
   return (
     <div className="movie">

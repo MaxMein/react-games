@@ -10,7 +10,6 @@ import Favorites from "./pages/Favorites";
 const App = () => {
   const [dataFromPage, setDataFromPage] = useState();
   const [favorites, setFavorite] = useState([]);
-  console.log(favorites);
   const handlePageData = (data) => {
     setDataFromPage(data);
   };
