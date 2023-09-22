@@ -317,8 +317,14 @@ h1 {
   background-color: #343739;
   box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
   color: #f9d3b4;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-75%);
 }
 
+.sidebar.open {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
 .sidebar li {
   list-style: none;
   padding: 5px;
@@ -345,8 +351,13 @@ h1 {
 .hamIcon {
   font-size: 20px;
   text-align: right;
+  cursor: pointer;
 }
 
 .hamDiv{
   text-align: right;
+}
+
+.closed{
+  height: 6%
 }

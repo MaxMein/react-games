@@ -16,33 +16,45 @@ const Sidebar = ({ page }) => {
     setActivePage(page);
   };
   page(activePage);
-  return (
-    <ul className="sidebar">
-      <div className="hamDiv">
-        <i onClick={toggleSidebar} className="hamIcon">
-          <GiHamburgerMenu />
-        </i>
-      </div>
-      <li>
-        <button onClick={() => handleSidebarClick("home")}>
-          <AiFillHome />
-          Home
-        </button>
-      </li>
-      <li>
-        <button onClick={() => handleSidebarClick("games")}>
-          <MdGames />
-          Games
-        </button>
-      </li>
-      <li>
-        <button onClick={() => handleSidebarClick("favorites")}>
-          <MdFavorite />
-          Favorites
-        </button>
-      </li>
-    </ul>
-  );
+  if (sidebar) {
+    return (
+      <ul className="sidebar open">
+        <div className="hamDiv">
+          <i onClick={toggleSidebar} className="hamIcon">
+            <GiHamburgerMenu />
+          </i>
+        </div>
+        <li>
+          <button onClick={() => handleSidebarClick("home")}>
+            <AiFillHome />
+            Home
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleSidebarClick("games")}>
+            <MdGames />
+            Games
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleSidebarClick("favorites")}>
+            <MdFavorite />
+            Favorites
+          </button>
+        </li>
+      </ul>
+    );
+  } else {
+    return (
+      <ul className="sidebar closed">
+        <div className="hamDiv">
+          <i onClick={toggleSidebar} className="hamIcon">
+            <GiHamburgerMenu />
+          </i>
+        </div>
+      </ul>
+    );
+  }
 };
 
 export default Sidebar;
