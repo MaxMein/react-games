@@ -5,7 +5,6 @@ const GameCard = ({ game }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const handleClick = () => {
-    console.log("click")
     setIsFavorited(!isFavorited);
   };
 

@@ -8,7 +8,7 @@ import Favorites from "./pages/Favorites";
 //Sites: 42699
 
 const App = () => {
-  const [dataFromPage, setDataFromPage] = useState("home");
+  const [dataFromPage, setDataFromPage] = useState();
   const handlePageData = (data) => {
     setDataFromPage(data);
   };

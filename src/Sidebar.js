@@ -6,8 +6,8 @@ import { MdFavorite } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Sidebar = ({ page }) => {
-  const [activePage, setActivePage] = useState();
-  const [sidebar, setSidebar] = useState(true);
+  const [activePage, setActivePage] = useState("home");
+  const [sidebar, setSidebar] = useState(false);
 
   const toggleSidebar = () => {
     setSidebar(!sidebar);

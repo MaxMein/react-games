@@ -6,7 +6,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-
+import Header from "../Header";
 const Games = () => {
   const [Games, setGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,9 +30,6 @@ const Games = () => {
     setGames(data.results);
     setNextPageUrl(data.next);
   };
-  const handleReloadClick = () => {
-    window.location.reload();
-  };
 
   useEffect(() => {
     searchGames(searchTerm);
@@ -40,9 +37,7 @@ const Games = () => {
   }, [currentPage]);
   return (
     <div className="app">
-      <h1 onClick={handleReloadClick} className="title">
-        GameLand
-      </h1>
+      <Header pagename={"Games"} />
       <div className="search">
         <input
           placeholder="Search for Games..."

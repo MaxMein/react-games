@@ -43,7 +43,7 @@ h1 {
 .search {
   width: 71%;
   margin: 4rem 0 2rem;
-
+  min-width: 71%;
   display: flex;
   align-items: center;
   justify-content: center;
