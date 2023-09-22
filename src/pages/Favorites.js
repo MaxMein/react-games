@@ -1,7 +1,9 @@
+import Header from "../Header";
+
 const Favorites = () => {
   return (
     <div>
-      <h1>Favorites</h1>
+      <Header pagename={"Favorites"} />
     </div>
   );
 };
